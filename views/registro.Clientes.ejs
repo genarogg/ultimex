@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2? family= Bitter:ital,wght@1,700 & family= Montserrat:wght@300;400;500;600 & display=swap');
+        body{
+            background-color:  rgb(18, 47, 124);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.5;
+            overflow-x: hidden;
+            margin: 2%;
+        }
+        body::after, body::before{
+            content: '';
+            position: fixed;
+            height: 900px;
+            width: 900px;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(150px);
+            opacity: 0.5;
+        }
+        body::before{
+            background-color: rgb(28, 28, 171);
+            left: 0;
+            bottom: 0;
+            transform: translate(-50%);
+        }
+        body::after{
+            background-color: rgb(62, 3, 118);
+            right: 0;
+            top: 0;
+            transform: translate(50%);
+        }
+        .form-main{
+            min-height: 100vh;
+            padding: 60px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .form-conte{
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            z-index: 1;
+        }
+        .form-conte .circle-1,
+        .form-conte .circle-2,
+        .form-conte .circle-3{
+            position: absolute;
+            background: linear-gradient(to right, rgb(55, 167, 242), rgb(23, 213, 143));
+            border-radius: 50%;
+            z-index: -1;
+        }
+        .form-conte .circle-1{
+            height: 150px;
+            width: 150px;
+            left: 0;
+            top: 10%;
+            transform: translateX(-70%);
+        }
+        .form-conte .circle-2{
+            height: 100px;
+            width: 100px;
+            right: 0;
+            bottom: 0;
+            transform: translate(30%);
+        }
+        .form-conte .circle-3{
+            height: 50px;
+            width: 50px;
+            right: 10%;
+            top: 10%;
+        }
+        .form-conte .box{
+            transform: translateY(-12%);
+            border: 1px solid rgb(147, 142, 142);
+            border-radius: 40px;
+            padding: 40px 50px;
+            backdrop-filter: blur(10px);
+            
+        }
+        .form-conte h3{
+            font-size: 28px;
+            text-align: center;
+            line-height: 1.2;
+            color: white;
+            font-weight: 500;
+        }
+        .form-conte form{
+            margin: 25px 0 20px;
+        }
+        .form-conte .input-box{
+            margin-bottom: 25px;
+
+        }
+        .form-conte .input-control{
+            margin-top: 0.5rem;
+            border-radius: 0.25rem;
+            border: 1px solid rgb(65, 255, 252);
+            padding-left: 0.5rem;
+            background-color: transparent;
+            display: block;
+            height: 30px;
+            width: 100%;
+            color: white;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 16px; 
+            font-weight: 100; 
+        }
+        .form-conte .input-control:hover {
+          box-shadow: 0 0 10px rgb(0, 0, 0);
+        }
+        .form-conte .input-control:focus{
+            box-shadow: 0 0 10px rgb(65, 255, 252);
+            outline: none;
+        }
+        .form-conte .btn{
+            height: 45px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: capitalize;
+            font-family: inherit;
+            cursor: pointer;
+            border-radius: 25px;
+            user-select: none;
+            background: linear-gradient(to right, rgb(86, 45, 247), rgb(121, 96, 220));
+            border: none;
+            color: white;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .form-conte .btn::before{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            transition: background-color 0.5s ease;
+            z-index: -1;
+        }
+        .form-conte .btn:hover::before{
+            background-color: hsla(0, 0%, 0%, 0.3) ;
+        }
+        .bi-lock-fill,
+        .bi-person-fill,
+        .bi-envelope-fill{
+            position: absolute;
+            margin-top: -30px;
+            transform: translate(330px);
+        }
+       
+        .btn-1{
+            margin: 20%;
+            text-decoration: none;
+            padding: 100%;
+            font-size: 1.2rem;
+            position: relative;
+            margin: 32px;
+            background-color: rgb(77, 106, 220);
+            color: white;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            border-radius: 50px;
+            transition: transform 0.3s ease;
+            transform: translateY(-30%);
+        }
+        h6{
+            color: rgb(210, 251, 255);
+            font-size: 0.7rem;
+            
+        }
+        p{
+            text-align: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 1rem;
+            
+        }
+        a{
+            text-decoration: none;
+            color: rgb(149, 255, 213);
+        }
+
+        .btn-1{
+            margin: 20%;
+            text-decoration: none;
+            padding: 100%;
+            font-size: 1.2rem;
+            position: relative;
+            margin: 32px;
+            background-color: rgb(77, 106, 220);
+            color: white;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            border-radius: 50px;
+            transition: transform 0.3s ease;
+            transform: translateY(-30%);
+        }
+
+        main{
+            display: flex;
+            gap: 200px;
+            margin-bottom: 80px;
+            padding: 10%;
+        }
+
+        .back{
+            width: 100%;
+            height: 50%;
+            margin: 0 auto;
+            padding: 1px 0;
+            
+           
+           
+        }
+       .decorar-arriba{
+         width: 100%;
+         height: 80%;
+        
+        }
+        .decorar-arriba .ul-1 {
+         float: right;
+         margin-right: 50px;
+        }
+       .decorar-arriba .ul-1 .li-1{
+         display:inline-block;
+         margin: -10%;
+         transform: translateY(-100%);
+        }
+
+        h1{
+         margin: -1%;
+         color: white; 
+         font-size: 2rem; 
+         font-weight: 600;
+         text-align: left;
+         font-family: 'Montserrat', sans-serif;
+         margin-right: -6%;
+         height: 40px;
+         padding: 1rem;
+         float: left;
+         transform: translateY(-43%);
+        }
+
+        .inicio-sesion{
+            text-decoration:none;
+            font-size: 1rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
+            padding: 5%;
+        }
+
+        .g-recaptcha{
+            transform: translate(8%);
+        }
+
+        
+        @media (max-width: 600px) {
+         
+
+            .form-conte .box {
+             padding: 30px; /* Reducir el padding para adaptarse a pantallas más pequeñas */
+            }
+
+            .form-conte h3 {
+               font-size: 24px; /* Reducir el tamaño de la fuente para pantallas más pequeñas */
+            }
+
+            .form-conte .input-control,
+            .form-conte .btn {
+              font-size: 14px; /* Reducir el tamaño de la fuente para pantallas más pequeñas */
+            }
+
+           .bi-lock-fill,
+           .bi-person-fill,
+           .bi-envelope-fill {
+             transform: translate(200px); /* Ajustar la posición de los iconos para pantallas más pequeñas */
+            }
+ 
+            .btn-1 {
+             margin: 10%; /* Reducir el margen para pantallas más pequeñas */
+             padding: 50%; /* Reducir el padding para pantallas más pequeñas */
+             font-size: 1rem; /* Reducir el tamaño de la fuente para pantallas más pequeñas */
+             transform: translateY(-20%); /* Ajustar la posición del botón para pantallas más pequeñas */
+           } 
+
+           h6 {
+             font-size: 0.5rem; /* Reducir el tamaño de la fuente para pantallas más pequeñas */
+           }
+
+           p {
+             font-size: 0.8rem; /* Reducir el tamaño de la fuente para pantallas más pequeñas */
+            }
+}
+  
+        
+
+
+    </style>
+    
+</head>
+
+<header>
+    <div class="back">
+        <div class="decorar-arriba">
+            <ul class="ul-1">
+                <li class="li-1"> <a href="/inicio" class="inicio-sesion" >Inicio</a></li>
+            </ul>
+          <h1><svg style="width: 60px;" fill="none" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g fill="#ff7a00"><path d="m14.3333 10c-2.3932 0-4.3333 1.8813-4.3333 4.202v23.596c0 2.3207 1.9401 4.202 4.3333 4.202 4.7865 0 8.6667-3.7626 8.6667-8.404v-15.192c0-4.6414-3.8802-8.404-8.6667-8.404z" fill="#ff7a00" style=" fill: rgb(0, 255, 89);"></path><path d="m27 32h42c2.7614 0 5-2.2386 5-5v-3c0-2.7614-2.2386-5-5-5h-42z" fill="#ff7a00" style="fill: rgb(0, 255, 89);"></path><path d="m77.6482 29.5h16.1018c4.5564 0 8.25 3.6937 8.25 8.25 0 4.5564-3.6936 8.25-8.25 8.25h-60.25c-12.9787 0-23.5 10.5213-23.5 23.5s10.5213 23.5 23.5 23.5h2.4603c-.5856-2.6383-.5971-5.3393-.169-8h-2.2913c-8.5604 0-15.5-6.9396-15.5-15.5s6.9396-15.5 15.5-15.5h60.25c8.975 0 16.25-7.2754 16.25-16.25s-7.275-16.25-16.25-16.25h-16.1018c.2291.7937.3518 1.6325.3518 2.5v3c0 .8675-.1227 1.7063-.3518 2.5z" fill="#ff7a00" style="fill: rgb(0, 255, 89);"></path><path d="m74 58v13c0 3.866 3.134 7 7 7h29v22c0 2.761-2.239 5-5 5h-6.0795c.6958-1.696 1.0795-3.553 1.0795-5.5 0-8.0081-6.4919-14.5-14.5-14.5s-14.5 6.4919-14.5 14.5c0 1.947.3836 3.804 1.0795 5.5h-16.1638c-9.9892 0-17.6677-8.8388-16.2711-18.7299 2.446-17.3229 17.4919-28.2701 34.3554-28.2701z" fill="#ff7a00" style="fill: rgb(0, 255, 89);"></path></g><path d="m110 74v-11c0-2.7614-2.239-5-5-5h-27v13c0 1.6569 1.3431 3 3 3z" fill="#ffaa5b" style="fill: rgb(92, 124, 255);"></path><path d="m96 99.5c0 2.017-.5685 3.9-1.554 5.5-1.8484 3-5.1636 5-8.946 5s-7.0976-2-8.946-5c-.9855-1.6-1.554-3.483-1.554-5.5 0-5.799 4.701-10.5 10.5-10.5s10.5 4.701 10.5 10.5z" fill="#ffaa5b" style="fill: rgb(92, 124, 255);"></path></svg>TurboClean</h1>
+        </div>
+    </div>
+   
+</header>
+
+    
+
+<body>
+    <section class="form-main">
+        <div class="form-conte">
+            <div class="circle-1"></div>
+            <div class="circle-2"></div>
+            <div class="circle-3"></div>
+            <div class="box">
+                <h3>Crear cuenta</h3>
+                <form action="/registro.Clientes"  method="post">
+                    <div class="input-box">
+                        <h6>Nombre</h6>
+                        <input  type="text" placeholder="Nombres y Apellidos" id="Nombre" name="Nombre" class="input-control" required>
+                        <i class="bi bi-person-fill"></i>
+                        
+                    </div>
+
+                    <div class="input-box">
+                        <h6>Correo eléctronico</h6>
+                        <input type="email" placeholder="Email" id="Correo" name="Correo" class="input-control" required>
+                        <i class="bi bi-envelope-fill"></i>
+                        
+
+                    </div>
+
+                    <div class="input-box">
+                        <h6>Contraseña</h6>
+                        <input type="password" placeholder="Como mínimo 6 caracteres" id="Contraseña" name="Contraseña" class="input-control" required minlength="6"> 
+                        <i class="bi bi-lock-fill"></i>
+                        
+
+                    </div>
+
+                    <div class="g-recaptcha" data-sitekey="6Le6p0spAAAAAKDIQVrcTlvwmMy2PM4i6oWhKP1-"></div>
+
+                   
+                    <p>¿Ya tienes una cuenta? <a href="/inicioSesionClientes">Inicia sesión</a></p>
+                    <button type="submit" class="btn">Registrarse</button>
+                   
+                </form>
+            </div>
+        </div>
+
+    </section>
+    
+</body>
+</html>

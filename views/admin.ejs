@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1692/1692816.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body{
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background-color: rgb(18, 47, 124)
+        }
+        h1, h2, h3, a, input, p, textarea, ul{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .wrapper{
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+        }
+        aside{
+            padding: 2rem;
+            padding-left: 5%;
+            padding-right: 5%;
+            color: white;
+            position: sticky;
+            top: 0;
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .logo{
+            font-weight: 600;
+            font-size: 1.4rem ;
+            text-align: left;
+        }
+        main{
+            background-color: white;
+            margin: 7rem;
+            margin-right: 15%;
+            margin-left: -2%;
+            border-radius: 2rem;
+            padding: 3rem;
+        }
+        .titulo-principal{
+            color: rgb(18, 47, 124);
+            margin-bottom: 2rem;
+        }
+        .container-productos{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 30px;
+            flex-direction: column;
+            
+        }
+        .producto{
+            border-radius: 20px;
+            width: 100%;
+        }
+        .producto:hover{
+            box-shadow: 0 10px 20px rgb(0, 0, 0, 0.20);
+        }
+        .info-producto{
+            background-color: rgb(18, 47, 124);
+            color: white;
+            padding: 15px 30px;
+            line-height: 1;
+            display: flex;
+            flex-direction: column;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: .25rem;
+        }
+        img{
+            width: 100%;
+            border-radius: 10px 10px 0 0 ;
+            transition: all .5s;
+        }
+        .producto-figure{
+            overflow:visible;
+        }
+        .producto:hover img{
+            transform: scale(1.2);
+        }
+        h3{
+            font-size: 1rem;
+            text-align:inherit;
+        }
+        .boton-categoria{
+            background-color: transparent;
+            border: 0;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            gap: 1rem;
+            font-weight: 300;
+            padding: 1rem;
+            font-size: .95rem;
+
+        }
+        .categoria{
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+        .boton-categoria > i.bi-hand-index-thumb-fill,
+        .boton-categoria > i.bi-hand-index-thumb{
+            transform: rotateZ(90deg);
+        }
+        .boton-categoria.active{
+            background-color: white;
+            color:  rgb(18, 47, 124);
+            width: 100%;
+            border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            position: relative;
+        }
+        .btn-1{
+            height: 45px;
+            width: 60%;
+            font-size: 23px;
+            font-weight: 500;
+            text-transform: capitalize;
+            font-family: inherit;
+            cursor: pointer;
+            border-radius: 40px;
+            user-select: none;
+            background: rgb(38, 211, 223);
+            border: none;
+            color: white;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .btn::before{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            transition: background-color 0.5s ease;
+            z-index: -1;
+        }
+        .btn:hover::before{
+            background-color: hsla(0, 0%, 0%, 0.3) ;
+        }
+        h2{
+            font-weight: 30;
+            font-size: 1.4rem;
+            text-align: center; 
+            color: rgb(152, 160, 244);
+        }
+
+        .decorar-arriba{
+         width: 100%;
+         height: 80%;
+        
+        }
+        .decorar-arriba .ul-1 {
+         float: right;
+         margin-right: 50px;
+        }
+        .decorar-arriba .ul-1 .li-1{
+         display:inline-block;
+         margin: -10%;
+         
+        }
+        .cerrar-sesion{
+            text-decoration:none;
+            font-size: 1rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
+            margin: 30%;
+            
+        }
+
+        .clientes{
+            margin: -110%;
+            text-decoration:none;
+            font-size: 1rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
+        }
+        .transacciones{
+            margin: 20%;
+            text-decoration:none;
+            font-size: 1rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
+        }
+        h1{
+       
+         color: white; 
+         font-size: 2rem; 
+         font-weight: 600;
+         text-align: left;
+         font-family: 'Montserrat', sans-serif;
+        }
+
+    
+        
+    </style>
+</head>
+
+<header>
+    <div class="back">
+        <div class="decorar-arriba">
+            <ul class="ul-1">
+                <li class="li-1"> <a href="/logout" class="cerrar-sesion" >Cerrar sesion</a>
+                    <a href="/administrador/clientes" class="clientes" >Clientes</a>
+                    <a href="/administrador/transacciones" class="transacciones" >Transacciones</a>
+                </li>
+            </ul>
+          <h1><svg style="width: 60px;" fill="none" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g fill="#ff7a00"><path d="m14.3333 10c-2.3932 0-4.3333 1.8813-4.3333 4.202v23.596c0 2.3207 1.9401 4.202 4.3333 4.202 4.7865 0 8.6667-3.7626 8.6667-8.404v-15.192c0-4.6414-3.8802-8.404-8.6667-8.404z" fill="#ff7a00" style=" fill: rgb(0, 255, 89);"></path><path d="m27 32h42c2.7614 0 5-2.2386 5-5v-3c0-2.7614-2.2386-5-5-5h-42z" fill="#ff7a00" style="fill: rgb(0, 255, 89);"></path><path d="m77.6482 29.5h16.1018c4.5564 0 8.25 3.6937 8.25 8.25 0 4.5564-3.6936 8.25-8.25 8.25h-60.25c-12.9787 0-23.5 10.5213-23.5 23.5s10.5213 23.5 23.5 23.5h2.4603c-.5856-2.6383-.5971-5.3393-.169-8h-2.2913c-8.5604 0-15.5-6.9396-15.5-15.5s6.9396-15.5 15.5-15.5h60.25c8.975 0 16.25-7.2754 16.25-16.25s-7.275-16.25-16.25-16.25h-16.1018c.2291.7937.3518 1.6325.3518 2.5v3c0 .8675-.1227 1.7063-.3518 2.5z" fill="#ff7a00" style="fill: rgb(0, 255, 89);"></path><path d="m74 58v13c0 3.866 3.134 7 7 7h29v22c0 2.761-2.239 5-5 5h-6.0795c.6958-1.696 1.0795-3.553 1.0795-5.5 0-8.0081-6.4919-14.5-14.5-14.5s-14.5 6.4919-14.5 14.5c0 1.947.3836 3.804 1.0795 5.5h-16.1638c-9.9892 0-17.6677-8.8388-16.2711-18.7299 2.446-17.3229 17.4919-28.2701 34.3554-28.2701z" fill="#ff7a00" style="fill: rgb(0, 255, 89);"></path></g><path d="m110 74v-11c0-2.7614-2.239-5-5-5h-27v13c0 1.6569 1.3431 3 3 3z" fill="#ffaa5b" style="fill: rgb(92, 124, 255);"></path><path d="m96 99.5c0 2.017-.5685 3.9-1.554 5.5-1.8484 3-5.1636 5-8.946 5s-7.0976-2-8.946-5c-.9855-1.6-1.554-3.483-1.554-5.5 0-5.799 4.701-10.5 10.5-10.5s10.5 4.701 10.5 10.5z" fill="#ffaa5b" style="fill: rgb(92, 124, 255);"></path></svg>TurboClean</h1>
+        </div>
+    </div>
+   
+</header>
+
+
+<body>
+    <div class="wrapper">
+        <aside>
+            <header>
+              
+                <a href="/administrador/Imagenes">  <h2  style="font-size: 1.3rem; text-decoration:underline; transform: translate(467%); color: white;">Modificar Imagen</h2>
+                
+            </header>
+            <nav>
+                <ul class="categoria">
+                    <header>
+                        <a href="/administrador/Categorias"> <h2 style="font-size: 1.3rem; text-decoration:underline; color: white;">Modificar Categoria</h2></a> 
+                    </header>
+                    <% Categorias.forEach(categoria => { %>
+                    <li >
+                        <p style="text-align: center; margin-left: -5%;"><%= categoria.Nombre %></p>
+                    </li>
+                    <% }); %>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <header>
+                <a href="/administrador/Productos"> <h2 class="logo" style="color: rgb(66, 76, 180); font-size: 1.3rem; text-decoration: underline; text-align: center; padding: 3rem;" >Modificar Producto</h2></a>
+            </header>
+            <div class="container-productos">
+                <% for(const producto of Productos) { %>
+                    <% for(const imagen of Imagenes) { %>
+                      <% if (imagen.Producto_ID == producto.ID) { %>
+                <div class="producto">
+                    <figure>
+                        <div class="producto-detalles">
+                            <a href="/administrador/productos/editar/<%=producto.ID %>">
+                                <img src="<%= imagen.URL %>" alt="Producto" height="200" width="200">
+                            </a>
+                        </div>
+                    </figure>
+                    <div class="info-producto">
+                        <p class="price">
+                            <h3>
+                                <%= producto.Nombre %>
+                            </h3>
+                        </p>
+                    </div>
+                </div>
+                <% } %>
+          <% } %>
+        <% } %>
+        </main>
+    </div>
+</body>
+</html>

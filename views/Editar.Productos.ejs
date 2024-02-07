@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1692/1692816.png">
+    <meta  id="viewport" content=" width=device- width, initial-scale=1.0">
+    <title>Editar Producto</title>
+    <style>
+            @import url('https://fonts.googleapis.com/css2? family= Bitter:ital,wght@1,700 & family= Montserrat:wght@300;400;500;600 & display=swap');
+        h1{
+            margin: 5%;
+            text-align: center;
+            Color: rgb(255, 255, 255);
+            font-family: 'Montserrat', sans-serif;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-Color:  rgb(18, 47, 124);
+            Color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.5;
+            overflow-x: hidden;
+            margin: 2%;
+        }
+        body::after, body::before{
+            content: '';
+            position: fixed;
+            height: 900px;
+            width: 900px;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(150px);
+            opacity: 0.5;
+        }
+        body::before{
+            background-Color: rgb(28, 28, 171);
+            left: 0;
+            bottom: 0;
+            transform: translate(-50%);
+        }
+        body::after{
+            background-Color: rgb(62, 3, 118);
+            right: 0;
+            top: 0;
+            transform: translate(50%);
+        }
+        .form-main{
+            margin: -6%;
+            min-height: 100vh;
+            padding: 60px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .form-conte{
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            z-index: 1;
+        }
+        .form-conte .circle-1,
+        .form-conte .circle-2,
+        .form-conte .circle-3{
+            position: absolute;
+            background: linear-gradient(to right, rgb(55, 167, 242), rgb(23, 213, 143));
+            border-radius: 50%;
+            z-index: -1;
+        }
+        .form-conte .circle-1{
+            height: 150px;
+            width: 150px;
+            left: 0;
+            top: 10%;
+            transform: translateX(-50%);
+        }
+        .form-conte .circle-2{
+            height: 100px;
+            width: 100px;
+            right: 0;
+            bottom: 0;
+            transform: translate(30%);
+        }
+        .form-conte .circle-3{
+            height: 50px;
+            width: 50px;
+            right: 10%;
+            top: 10%;
+        }
+        .form-conte .box{
+            border: 1px solid rgb(147, 142, 142);
+            border-radius: 40px;
+            padding: 40px 50px;
+            backdrop-filter: blur(10px);
+        }
+        .form-conte h3{
+            font-size: 28px;
+            text-align: center;
+            line-height: 1.2;
+            Color: white;
+            font-weight: 500;
+        }
+        .form-conte form{
+            margin: 25px 0 20px;
+        }
+        .form-conte .input-box{
+            margin-bottom: 25px;
+
+        }
+        .form-conte .input-control{
+            display: block;
+            height: 45px;
+            width: 100%;
+            background-Color: transparent;
+            border: none;
+            border-bottom: 1px solid rgb(147, 142, 142);
+            Color: inherit;
+            font-weight: inherit;
+            font-family: inherit;
+            font-size: 16px;
+        }
+        .form-conte .input-control:focus{
+            outline: none;
+        }
+
+    
+        .container{
+            min-height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin:-200px;
+        }
+        .buttons{
+            display: flex;
+            flex-direction:inherit;
+        }
+        .form-conte .btn{
+            height: 45px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: capitalize;
+            font-family: inherit;
+            cursor: pointer;
+            border-radius: 50px;
+            user-select: none;
+            background: linear-gradient(to right, rgb(86, 45, 247), rgb(121, 96, 220));
+            border: none;
+            Color: white;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .form-conte .btn::before{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            transition: background-Color 0.5s ease;
+            z-index: -1;
+        }
+        .form-conte .btn:hover::before{
+            background-Color: hsla(0, 0%, 0%, 0.3) ;
+        }
+        .btn{
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            position: relative;
+            margin: 32px;
+            background-color: rgb(77, 106, 220);
+            color: white;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            border-radius: 50px;
+            transition: transform 0.3s ease;
+        }
+        .btn ::after, .btn ::before{
+            content: "";
+            position: absolute;
+            opacity: 0.3;
+            background-color: rgb(77, 106, 220);
+            border-radius: inherit;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            transition: transform 0.3s ease;
+        }
+        .form-select{
+            width: 100%; border:none; background-color: rgb(18, 47, 124) ;
+            padding: 0.5rem;
+            color: white ;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: inset rgb(89, 82, 235);
+            border-radius:5px;
+            font-weight: 20%;
+            margin: 5%;
+            margin-left: 2%;
+        }
+
+    </style>
+</head>
+<a href="/administrador/productos" class="btn btn " style=" padding: 20px 30px;font-size: 1.4rem; transform: translate(-500%); margin-bottom:  -20%; ">Regresar</a>
+<h1>Editar Producto</h1>
+<section class="form-main">
+    <div class="form-conte">
+        <div class="circle-1"></div>
+        <div class="circle-2"></div>
+        <div class="circle-3"></div>
+            <div class="box">
+            <form action="/administrador/productos/editar/<%= Productos.ID %>" method="post">
+                <div class="input-box">
+                    <input type="text" placeholder="Ingrese el Nombre" id="Nombre" name="Nombre" class="input-control" required style="margin: 5%;" value="<%= Productos.Nombre %>">
+
+                    <input type="text" placeholder="Ingrese el Código" id="Codigo" name="Codigo" class="input-control" required style="margin: 5%;" value="<%= Productos.Codigo %>">
+
+                    <textarea  class="input-control" maxlength="500" name="Descripcion" id="Descripcion" placeholder="Descripcion" required style="margin: 5%;" ><%= Productos.Descripcion%></textarea>
+
+                    <input type="text" placeholder="Ingrese el Color" id="Color" name="Color" class="input-control" required style="margin: 5%;" value="<%= Productos.Color %>">
+
+                    <input type="text" placeholder="Ingrese La Marca del Producto" id="Marca" name="Marca" class="input-control" required style="margin: 5%;" value="<%= Productos.Marca %>">
+
+                    <input  class="input-control" type="number" name="Precio"  id="Precio" placeholder="Ingrese el Precio "  min="1" step="0.01" required style="margin: 5%;" value="<%= Productos.Precio%>">
+
+                    <select name="Categoria_ID" id="Categoria_ID" class="form-select">
+                        <option value="" disabled>Categorias</option>
+                        <% if (Categorias && Categorias.length > 0) { %>
+                          <% Categorias.forEach((categoria) => { %>
+                            <option value="<%= categoria.ID %>" <% if (categoria.ID === Productos.Categoria_ID) { %>selected<% } %>>
+                              <%= categoria.Nombre %>
+                            </option>
+                          <% }); %>
+                        <% } else { %>
+                          <option value="" selected>No hay categorias disponibles
+                          </option>
+                        <% } %>
+                      </select>
+                </div>
+                <div class="buttons">
+
+                    <button type="submit" class="btn">Actualizar</button>
+        
+                </div>
+                <div class="buttons">
+                    <a href="/administrador/productos" class="btn" style="margin: 5%; text-align: center; text-decoration: none; padding: 3%;" >Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>
+    
+</body>
+</html> 

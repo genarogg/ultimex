@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1692/1692816.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+    </head>
+    
+   <style>
+     @import url('https://fonts.googleapis.com/css2? family= Bitter:ital,wght@1,700 & family= Montserrat:wght@300;400;500;600 & display=swap');
+        body{
+            background-color:rgb(18, 47, 124) ;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+         body::after, body::before{
+            content: '';
+            position: fixed;
+            height: 900px;
+            width: 900px;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(150px);
+            opacity: 0.5;
+        }
+        body::before{
+            background-color: rgb(28, 28, 171);
+            left: 0;
+            bottom: 0;
+            transform: translate(-50%);
+        }
+        body::after{
+            background-color: rgb(62, 3, 118);
+            right: 0;
+            top: 0;
+            transform: translate(50%);
+        }
+        .circle-1,
+        .circle-2,
+        .circle-3{
+            position: absolute;
+            background: linear-gradient(to right, rgb(55, 167, 242), rgb(23, 213, 143));
+            border-radius: 50%;
+            z-index: -1;
+        }
+       .circle-1{
+            height: 200px;
+            width: 200px;
+            left: 0;
+            top: 10%;
+            transform: translateX(100%);
+        }
+        .circle-2{
+            height: 100px;
+            width: 100px;
+            right: 0;
+            bottom: 0;
+            transform: translate(-300%);
+        }
+        .circle-3{
+            height: 50px;
+            width: 50px;
+            right: 10%;
+            top: 10%;
+            transform: translate(-150%);
+        }
+        h1{
+            padding: 5%;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            font-family: 'Montserrat', sans-serif;
+        }
+        table{
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 1em;
+            font-family: sans-serif; 
+            width: 30%;
+            height: 50px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            align-items: center;
+            margin-left:auto;
+            margin-right: auto;
+        }
+        table thead tr{
+            background-color: rgb(157, 177, 245);
+            color : white;
+             text-align: midler;
+        }
+        table th, table td{
+          padding: 12px 15px;
+          line-height: 2;
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          text-align: center;
+          color: white;
+        }
+        table body tr{
+            border-bottom: 1px solid white; 
+        }
+        table tbody tr:nth-of-type(even) { 
+            background-color: rgb(157, 177, 245);
+            border-bottom: white;
+         }
+          table tbody tr:last-of-type { 
+            border-bottom: 1px solid rgb(255, 255, 255);
+         }
+        .sinbordefondo {
+         background-color:#cdcdcd;
+         border: 5;
+         border-radius: 5px;
+         outline: none;
+         border: 0;
+        }
+        .container-1{
+            min-height: 30vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin:20px;
+        }
+        .container-2{
+            min-height: 10vh;
+            display: flex;
+            justify-content:right;
+            margin:20px;
+        }
+        .buttons{
+            display: flex;
+            flex-direction:inherit;
+        }
+        .btn{
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            position: relative;
+            margin: 32px;
+            background-color: rgb(77, 106, 220);
+            color: white;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            border-radius: 50px;
+            transition: transform 0.3s ease;
+        }
+        .btn ::after, .btn ::before{
+            content: "";
+            position: absolute;
+            opacity: 0.3;
+            background-color: rgb(77, 106, 220);
+            border-radius: inherit;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+            transition: transform 0.3s ease;
+        }
+        .btn:hover{
+            transform: translate(-12px, -12px);
+        }
+        .btn:hover::after{
+            transform: translate(6px, 6px);
+        }
+        .btn:hover::before{
+            transform: translate(12px, 12px);
+        }
+    </style>
+</head>
+<a href="/inicio" style="text-decoration:underline; margin:10% translate(500%); font-size: 1.5rem; color: white; padding-left: 87%; margin-bottom: 40%;">Cerrar Sesión</a>
+  <a href="/administrador" class="btn btn " style=" padding: 20px 30px;font-size: 1.4rem; transform: translate(-700%); ">Inicio</a>
+<h1>Clientes</h1>
+<body>
+   
+    <table class="content-table">
+    
+    </div>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <div class="circle-1"></div>
+        <div class="circle-2"></div>
+        <div class="circle-3"></div>
+        
+        <% registro.forEach(reg=> { %>
+            <tr>
+        <td><%= reg.ID %></td>
+        <td><%= reg.Nombre %></td>
+        <td><%= reg.Correo %></td>
+        <% }); %>
+      
+      </tr>
+    
+    </tbody>
+   </table>
+    </table>  
+    </div>
+    </table>
+</body>
+</html>
+

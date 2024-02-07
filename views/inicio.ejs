@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1692/1692816.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TurboClean</title>
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1692/1692816.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style>
+         @import url('https://fonts.googleapis.com/css2? family= Bitter:ital,wght@1,700 & family= Montserrat:wght@300;400;500;600 & display=swap');
+        body{
+            background-color:rgb(18, 47, 124) ;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.5;
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body::after, body::before{
+            content: '';
+            position: fixed;
+            height: 900px;
+            width: 900px;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(150px);
+            opacity: 0.5;
+        }
+        body::before{
+            background-color: rgb(28, 28, 171);
+            left: 0;
+            bottom: 0;
+            transform: translate(-50%);
+        }
+        body::after{
+            background-color: rgb(62, 3, 118);
+            right: 0;
+            top: 0;
+            transform: translate(50%);
+        }
+        .circle-1,
+        .circle-2,
+        .circle-3{
+            position: absolute;
+            background: linear-gradient(to right, rgb(55, 167, 242), rgb(23, 213, 143));
+            border-radius: 50%;
+            z-index: -1;
+        }
+       .circle-1{
+            height: 100px;
+            width: 100px;
+            left: 0;
+            top: 10%;
+            transform: translateX(300%);
+        }
+        .circle-2{
+            height: 80px;
+            width: 80px;
+            right: 0;
+            bottom: 0;
+            transform: translate(-500%);
+        }
+        .circle-3{
+            height: 50px;
+            width: 50px;
+            right: 10%;
+            top: 10%;
+            transform: translate(-150%);
+        }
+        ul{
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        h1{
+         margin: -1%;
+         color: white; 
+         font-size: 2rem; 
+         font-weight: 600;
+         text-align: left;
+         font-family: 'Montserrat', sans-serif;
+         margin-left: 20px;
+         height: 40px;
+         padding: 1rem;
+         float: left;
+        }
+        h2{
+            margin: 1%;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            color: rgb(96, 187, 195);
+            font-size: 3.5rem;
+        }
+        .wrapper{
+            display: grid;
+            grid-template-columns: 2fr 7fr;
+        }
+        aside{
+            padding: 0;
+            margin: -5%;
+            padding: 1rem;
+            margin-right: 10%;
+            padding-right: 0;
+            color: white;
+            position: sticky;
+            top: 0;
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        main{
+            background-color: white;
+            margin: 4rem;
+            margin-left: 3rem;
+            margin-right: 3rem;
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: 0px 0px 5px 1px black;
+        }
+        .titulo-principal{
+            color:  rgb(18, 47, 124) ;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            text-align:left;
+        }
+
+        .producto-imagen{
+            max-width: 100%;
+            border-radius: 1rem;
+            height: 200px;
+            border-radius: 10px 10px 0 0 ;
+            transition: all .5s;
+        }
+        .producto-titulo{
+            font-size: 1rem;
+            text-align: center;
+            margin-top: 10px; font-weight: bold;
+        }
+        
+         
+        .producto:hover{
+            box-shadow: 0 10px 20px rgb(0, 0, 0, 0.20);
+        }
+        .info-producto{
+            background-color: rgb(18, 47, 124);
+            color: white;
+            padding: 15px 30px;
+            line-height: 1;
+            display: flex;
+            flex-direction: column;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: .25rem;
+        }
+       
+        .producto-detalles{
+            margin: -40px;
+            background-color:rgb(18, 47, 124);
+            color: white;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin-top: 2rem;
+            height: 120px;
+        }
+        h3{
+            text-align: center;
+        }
+        .producto{
+            border-radius: 20px;
+            width: 100%;
+        }
+        .producto:hover{
+            box-shadow: 0 10px 20px rgb(0, 0, 0, 0.20);
+        }
+       
+
+        .producto-figure{
+            overflow:visible;
+        }
+        .producto:hover img{
+            transform: scale(1.2);
+        }
+        
+        .producto-precio{
+            font-size: 20px;
+            font-weight: 900;
+            
+        }
+       
+        .boton-menu{
+            background-color: transparent;
+            border: 0;
+            color: white;
+            font-size: 1rem;
+            display: flex;
+            gap: 1rem;
+            font-weight: 300;
+            padding: 1rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+    
+        .menu{
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+        .btn-1{
+            height: 45px;
+            width: 60%;
+            font-size: 23px;
+            font-weight: 500;
+            text-transform: capitalize;
+            font-family: inherit;
+            cursor: pointer;
+            border-radius: 40px;
+            user-select: none;
+            background: rgb(38, 211, 223);
+            border: none;
+            color: white;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .btn::before{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            transition: background-color 0.5s ease;
+            z-index: -1;
+        }
+        .btn:hover::before{
+            background-color: hsla(0, 0%, 0%, 0.3) ;
+        }
+        .box{
+             margin: 100px auto;
+             width: 300px;
+             height: 50px;
+        }
+        .boton-lista{
+            align-items: center;
+            text-align: right;
+            margin-right: 3%;
+            border: none;
+            padding: 2px;
+            margin: 1%;
+        }
+        .grid-view-btn{
+            transform: translate(-10%);
+            background-color:white ;
+            padding: 1rem;
+            border-top-left-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+            color: rgb(18, 47, 124) ;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-weight: 20%;
+            border: none;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            
+        }
+        .list-view-btn{
+            transform: translate(-19%);
+            border: none;
+            background-color: white;
+            padding: 1rem;
+            color: rgb(18, 47, 124);
+            text-transform: uppercase;
+            cursor: pointer;
+            border-top-right-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+           
+        }
+        .input-control{
+            display: block;
+            height: 45px;
+            width: 115%;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid rgb(147, 142, 142);
+            color: white;
+            font-weight: inherit;
+            font-family: inherit;
+            font-size: 16px;
+        }
+         .input-control:focus{
+            outline: none;
+        }
+        .grid-view-btn::before{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: background-color 0.5s ease;
+            z-index: -1;
+        }
+        .list-view-btn::before{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: background-color 0.5s ease;
+            z-index: -1;
+        }
+        .grid-view-btn::hover::before{
+            background-color: hsla(0, 0%, 0%, 0.3) ;
+        }
+        .list-view-btn:hover::before{
+            background-color: hsla(0, 0%, 0%, 0.3) ;
+        }
+     
+        .header-mobile{
+            display: none;
+        }
+        .boton{
+        height: 45px;
+            width: 50%;
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: capitalize;
+            font-family: inherit;
+            cursor: pointer;
+            border-radius: 25px;
+            user-select: none;
+            background: linear-gradient(to right, rgb(86, 45, 247), rgb(121, 96, 220));
+            border: none;
+            color: white;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            margin: 10%;
+            margin-left: -5%;
+       }
+        .boton::before{
+          content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            transition: background-color 0.5s ease;
+            z-index: -1;
+        }
+       .boton:hover::before{
+          background-color: hsla(0, 0%, 0%, 0.3) ;
+        }
+        a.button{
+         background: linear-gradient(to right, rgb(86, 45, 247), rgb(121, 96, 220));
+         color:#fff;
+         padding: 15px;
+         text-decoration:none;
+         border-radius: 25px;
+         margin: -1%;
+
+        }
+        .otro-fondo{
+            width: 100%;
+            height: 50%;
+            margin: 0 auto;
+            padding: 1px 0;
+            border-collapse: collapse;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+            
+            
+        }
+        .fondo{
+            width: 100%;
+            height: 50%;
+            margin: 0 auto;
+            padding: 1px 0;
+            border-collapse: collapse;
+            margin: 0 auto;
+            
+            
+            
+        }
+        .back{
+            width: 100%;
+            height: 50%;
+            margin: 0 auto;
+            padding: 1px 0;
+           
+        }
+       .decorar-arriba{
+         width: 100%;
+         height: 80px;
+        
+        }
+       .decorar-arriba .ul-1 {
+         float: right;
+         margin-right: 5px;
+        }
+       .decorar-arriba .ul-1 .li-1{
+         display:inline-block;
+         margin: 0 ;
+        }
+       .grid-view-btn.selected {
+         color: white;
+          background-color: rgb(157, 177, 245);
+        }
+
+       .list-view-btn.selected {
+         color: white;
+         background-color: rgb(157, 177, 245);
+        }
+
+        .contenedor-productos{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 40px;
+            flex-direction: column;
+        }
+       .container {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+        }
+
+        .inicio-sesion{
+            text-decoration:none;
+            font-size: 1rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
+            
+            
+        }
+
+        .registrar{
+            margin: -110%;
+            text-decoration:none;
+            font-size: 1rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: white;
+        }
+
+        
+
+         
+
+
+
+        .bi-chevron-down{
+            position: absolute;
+            transform: translate(1800%);
+            cursor: pointer;
+            transition: .3s;
+        }
+        .hidden{
+         display: none;
+        }
+
+        .seleccion{
+            border:none; background-color: rgb(157, 177, 245) ;
+            padding: 0.5rem;
+            color: white ;
+            width: 115%;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: inset rgb(109, 14, 225);
+            border-radius:5px;
+            text-transform: capitalize;
+            font-weight: 20%;
+        }
+
+       
+
+        
+        
+
+        
+
+       
+
+        
+
+
+
+        /*Responsive*/
+        @media screen and (max-width: 600px){
+            .wrapper{
+                grid-template-columns: 1fr;
+                padding: 10px;
+
+            }
+         
+            main{
+                margin: 110%;
+                padding: 2rem;
+                height: 85%;
+                width: 80%;
+                gap: 1rem;
+                
+            }
+            .contenedor-productos{
+                grid-template-columns: 1fr 1fr;
+                
+            }
+            .input-control{
+             height: 30px;
+             width: 90%;
+             border-bottom: 1px solid rgb(147, 142, 142);
+             color: inherit;
+             font-weight: inherit;
+             font-family: inherit;
+             font-size: 15px;
+            }
+            .seleccion{
+                width: 90%;
+
+            }
+            .header-mobile{
+                display: flex;
+            }
+
+            .grid-view-btn{
+             transform: translate(-10%);
+             padding: 0.8rem;
+             border-top-left-radius: 1rem;
+             border-bottom-left-radius: 1rem;
+             font-weight: 10%;
+             font-size: 0.8rem;
+            
+            }
+            .list-view-btn{
+             transform: translate(-19%);
+             padding: 0.8rem;
+             border-top-right-radius: 1rem;
+             border-bottom-right-radius: 1rem;
+             font-weight: 10%;
+             font-size: 0.8rem;
+           
+            }
+            .Responsive{
+                gap: 30px;
+                margin-bottom: 100px;
+                padding: 4%;
+                margin: 5%;
+                
+            }
+            .button-filter-container {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              
+              padding: 5%;
+              width: 70%;
+              transform: translate(23%);
+            }
+
+            .boton-lista {
+              display: flex;
+            }
+
+            h6{
+                font-weight: 300;
+            }
+
+            .header-mobile {
+                margin-right: 5%;
+                color: white;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-size: 1.7rem;
+                padding: 0%;
+            }
+            .boton-lista{
+                padding: 0%;
+            }
+            h1{
+                font-size: 1.5rem;
+                margin: -3%;
+                padding: 1rem;
+        
+            }
+
+            .inicio-sesion{
+                font-size: 0.8rem;
+                font-weight: 700;
+                margin: 5%;
+                
+            }
+
+            .registrar{
+                font-size: 0.8rem;
+                font-weight: 700;
+                
+                
+            }
+
+            .decorar-arriba .ul-1 .li-1{
+              margin: -20px;
+            }
+
+            .puntero-abajo{
+                position: absolute;
+                transform: translate(100%);
+                cursor: pointer;
+                transition: .3s;
+                font-size: 0.6rem;
+                padding: 5%;
+                
+            }
+
+            .puntero{
+                transform: translate(1800%);
+            }
+        
+            
+            .input-control{
+                margin-left: 5%;
+            }
+
+            .seleccion{
+                margin-left: 5%;
+                width: 90%;
+            }
+
+            
+
+            .boton{
+                margin-left: 3%;
+                
+            }
+
+            .button{
+                
+                border-bottom: 1px solid rgb(157, 177, 245);
+               
+            }
+
+            .titulo-principal{
+                font-size: 1.5rem;
+                text-align: center;
+            }
+          
+            .producto-imagen{
+                width: 100px;
+                height: 50px;
+            }
+
+            .producto-detalles{
+                margin: -10px ;
+                padding: 1rem;
+                border-radius: 1rem;
+                margin-top: 2rem;
+                height: 100px;
+            }
+
+            .info-producto{
+                padding: 5px ;
+                line-height: 0;
+                display: flex;
+                flex-direction: column;
+                border-radius: 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0rem;
+            }
+
+            .producto-titulo{
+             font-size: 0.5rem;
+             text-align: center;
+             margin-top: 10px; font-weight: bold;
+            }
+            .producto-precio{
+             font-size: 0.8rem;
+            
+            }
+
+            .contenedor-productos{
+                margin: -1%;
+            }
+
+            figure{
+                margin: 2%;
+            }
+
+
+
+            
+            
+
+            
+            
+
+
+
+
+
+            
+            
+
+           
+        }
+
+
+
+
+        @media screen and (max-width: 1220px) {
+            main{
+              margin-left: 0;
+              padding: 2rem;  
+            }
+        }
+       
+    </style>
+</head>
+
+<header>
+    <div class="back">
+        <div class="decorar-arriba">
+            <ul class="ul-1">
+                <li class="li-1"><% if (url === '/cerrarsesion') { %>
+                    <a href="<%= url %>" class="inicio-sesion">Cerrar sesión</a>
+                  <% } else if (url === '/registro.Clientes') { %>
+                    <a href="/inicioSesionClientes" class="inicio-sesion"> Iniciar sesión</a>
+                    <a href="<%= url %>"  class="registrar" >Registrarse</a>
+                    
+                  <% } %></li>
+            </ul>
+          <h1><svg style="width: 60px;" fill="none" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g fill="#ff7a00"><path d="m14.3333 10c-2.3932 0-4.3333 1.8813-4.3333 4.202v23.596c0 2.3207 1.9401 4.202 4.3333 4.202 4.7865 0 8.6667-3.7626 8.6667-8.404v-15.192c0-4.6414-3.8802-8.404-8.6667-8.404z" fill="#ff7a00" style=" fill: rgb(0, 255, 89);"></path><path d="m27 32h42c2.7614 0 5-2.2386 5-5v-3c0-2.7614-2.2386-5-5-5h-42z" fill="#ff7a00" style="fill: rgb(0, 255, 89);"></path><path d="m77.6482 29.5h16.1018c4.5564 0 8.25 3.6937 8.25 8.25 0 4.5564-3.6936 8.25-8.25 8.25h-60.25c-12.9787 0-23.5 10.5213-23.5 23.5s10.5213 23.5 23.5 23.5h2.4603c-.5856-2.6383-.5971-5.3393-.169-8h-2.2913c-8.5604 0-15.5-6.9396-15.5-15.5s6.9396-15.5 15.5-15.5h60.25c8.975 0 16.25-7.2754 16.25-16.25s-7.275-16.25-16.25-16.25h-16.1018c.2291.7937.3518 1.6325.3518 2.5v3c0 .8675-.1227 1.7063-.3518 2.5z" fill="#ff7a00" style="fill: rgb(0, 255, 89);"></path><path d="m74 58v13c0 3.866 3.134 7 7 7h29v22c0 2.761-2.239 5-5 5h-6.0795c.6958-1.696 1.0795-3.553 1.0795-5.5 0-8.0081-6.4919-14.5-14.5-14.5s-14.5 6.4919-14.5 14.5c0 1.947.3836 3.804 1.0795 5.5h-16.1638c-9.9892 0-17.6677-8.8388-16.2711-18.7299 2.446-17.3229 17.4919-28.2701 34.3554-28.2701z" fill="#ff7a00" style="fill: rgb(0, 255, 89);"></path></g><path d="m110 74v-11c0-2.7614-2.239-5-5-5h-27v13c0 1.6569 1.3431 3 3 3z" fill="#ffaa5b" style="fill: rgb(92, 124, 255);"></path><path d="m96 99.5c0 2.017-.5685 3.9-1.554 5.5-1.8484 3-5.1636 5-8.946 5s-7.0976-2-8.946-5c-.9855-1.6-1.554-3.483-1.554-5.5 0-5.799 4.701-10.5 10.5-10.5s10.5 4.701 10.5 10.5z" fill="#ffaa5b" style="fill: rgb(92, 124, 255);"></path></svg>TurboClean</h1>
+        </div>
+    </div>
+   
+</header>
+<header>
+    <div class="otro-fondo">
+        <h2>Bienvenido</h2>
+        <div class="Responsive">
+            <div class="button-filter-container">
+        
+                <div class="boton-lista">
+                    <button onclick="changeColumns(4)" class="grid-view-btn selected">Cuadricula</button>
+                    <button onclick="changeColumns(1)" class="list-view-btn"> Vista Lista</button>
+                </div>
+                
+        
+            </div>
+        
+        </div>
+    </div>
+</header>
+
+<body>
+    <body onload="changeColumns(4)"></body>
+        <div class="wrapper">
+            
+            <nav>
+                <form action="buscar" method="post">
+                    <div class="menu-desplegable">
+
+                        <aside>
+                            <ul>
+                                
+                                <li>
+                                    <div class="titulo-producto">
+                                        <p class="boton-menu boton-categoria ">Producto <i class="bi bi-chevron-down puntero"></i></p>
+                                    </div>
+                                    
+                                    <div class="input-box">
+                                        <div class="text-producto hidden">
+                                            <input  style=" border-radius: none; padding: 2px;" type="text" placeholder="Buscar Producto..." id="Nombre" name="Nombre" class="input-control">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="titulo-descripcion">
+                                        <p class="boton-menu boton-categoria">Descripción <i class="bi bi-chevron-down puntero"></i></p>
+                                    </div>
+                                
+                                    <div class="input-box">
+                                        <div class="text-descripcion hidden">
+                                            <input style="border-radius: none; padding: 2px;" type="text" placeholder="Buscar Descripción..." id="Descripcion" name="Descripcion" class="input-control">
+                                        </div>
+                                        
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="titulo-categoria">
+                                        <p class="boton-menu boton-categoria"></i>Categorias  <i class="bi bi-chevron-down puntero"></i> </p>
+                                    </div>
+                                    <% var categoria= new Set(); %>
+                                    <div class="input-box">
+                                        <div class="text-categoria hidden">
+                                            <select class="seleccion"
+                                                name="Categoria" id="Categoria">
+                                              <option value="" selected>Ingrese categoría</option>
+                                              <% Productos.forEach(producto => { %>
+                                                <% if (!categoria.has(producto.CategoriaNombre)) {
+                                                  categoria.add(producto.CategoriaNombre); %>
+                                              <option value="<%= producto.CategoriaNombre %>"><%= producto.CategoriaNombre %></option>
+                                              <% }}); %>
+                                              
+                                           </select>
+                                        </div>
+
+                                    </div>
+                                    
+                                       
+                                </li>
+                                <li>
+                                    <div class="titulo-color">
+                                        <p class="boton-menu boton-categoria">Color <i class="bi bi-chevron-down puntero"></i></p>
+                                    </div>
+                                    
+                                    <div class="input-box">
+                                        <div class="text-color hidden">
+                                            <input style="border-radius: none;  padding: 2px;" type="text" placeholder="Buscar Color..." id="Color" name="Color" class="input-control">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="titulo-marca">
+                                        <p  class=" boton-menu boton-categoria">Marca <i class="bi bi-chevron-down puntero"></i></p>
+                                    </div>
+                                    <div class="input-box">
+                                        <div class="text-marca hidden">
+                                            <input style="border-radius: none;  padding: 2px;" type="text" placeholder="Buscar Marca..." id="Marca" name="Marca" class="input-control">
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="titulo-promedio">
+                                        <p class="boton-menu boton-promedio"></i>Promedio<i class="bi bi-chevron-down puntero"></i> </p>
+                                    </div>
+                                    <div class="input-box">
+                                        <div class="text-promedio hidden">
+                            <select name="Promedio" id="Promedio" class="seleccion">
+    <option selected disabled value="">Agrupar por promedio</option>
+    <option value="todos">Todos</option>
+    <option value="menos-de-3">Menos de 3</option>
+    <option value="3-a-4">3 a 4</option>
+    <option value="mayor-o-igual-a-4">Mayor o igual a 4</option>
+  </select>
+
+                                            </div></div>
+                                    <li><button class="boton" type="submit">Buscar</button> <a href="/" class="button">Restablecer</a></li>
+        
+                                
+                                </li>
+                            </ul>
+                        </aside>
+
+                    </div>
+                
+                </form>
+            </nav>
+           
+    
+              <main>
+                <h3 class="titulo-principal">Todos Los Productos</h3>
+                <div class="contenedor-productos" >
+           
+                  <% for (const producto of Productos) { %>
+                   
+                        <div class="producto" >
+<figure >
+    <a href="/producto/<%= producto.ID %>">
+        <div class="container">
+    <img src="<%= producto.URL %>" class="producto-imagen"></div>
+</a>
+                            <div class="producto-detalles">
+                                <h4  class="producto-titulo"><%= producto.Nombre %></h4>
+                                <div class="container">
+                                <p style="font-weight: bold;" class="producto-precio" ><%= producto.Precio %> $</p> </div>
+                            </div>
+                        </figure>   
+                </div>
+                <% } %>
+                </div>
+           
+           
+              </main>
+
+              <script>
+                // Toggle
+        
+                // Constantes toggle titulos
+                const toggleProducto = document.querySelector('.titulo-producto');
+                const toggleDescripcion = document.querySelector('.titulo-descripcion');
+                const toggleCategoria = document.querySelector('.titulo-categoria');
+                const toggleColor = document.querySelector('.titulo-color');
+                const toggleMarca = document.querySelector('.titulo-marca');
+                const togglePromedio = document.querySelector('.titulo-promedio');
+                // Constantes contenido texto
+                const contentProducto = document.querySelector('.text-producto');
+                const contentDescripcion = document.querySelector('.text-descripcion');
+                const contentCategoria = document.querySelector('.text-categoria');
+                const contentColor = document.querySelector('.text-color');
+                const contentMarca = document.querySelector('.text-marca');
+                const contentPromedio = document.querySelector('.text-promedio');
+                // Funciones click
+                toggleProducto.addEventListener('click', () => {
+                    contentProducto.classList.toggle('hidden');
+                });
+        
+                toggleDescripcion.addEventListener('click', () => {
+                    contentDescripcion.classList.toggle('hidden');
+                });
+                toggleCategoria.addEventListener('click', () => {
+                    contentCategoria.classList.toggle('hidden');
+                });
+                toggleColor.addEventListener('click', () => {
+                    contentColor.classList.toggle('hidden');
+                });
+        
+                toggleMarca.addEventListener('click', () => {
+                    contentMarca.classList.toggle('hidden');
+                });
+                togglePromedio.addEventListener('click', () => {
+                    contentPromedio.classList.toggle('hidden');
+                });
+            </script>
+              <script>
+                // Función para cambiar el número de columnas en la cuadrícula
+                function changeColumns(columns) {
+                  const productContainer = document.querySelector('.contenedor-productos');
+                  const gridBtn = document.querySelector('.grid-view-btn');
+                  const listBtn = document.querySelector('.list-view-btn');
+              
+                  // Actualizar la propiedad grid-template-columns
+                  productContainer.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+              
+                  // Cambiar la clase del botón activo
+                  if (columns === 4) {
+                    gridBtn.classList.add('selected');
+                    listBtn.classList.remove('selected');
+                  } else if (columns === 1) {
+                    listBtn.classList.add('selected');
+                    gridBtn.classList.remove('selected');
+                  }
+              
+                  // Guardar la selección en localStorage
+                  localStorage.setItem('view', columns);
+                }
+              
+                // Función para cargar la vista almacenada en localStorage
+                function loadView() {
+                  const savedView = localStorage.getItem('view');
+                  if (savedView === '4') {
+                    changeColumns(4);
+                  } else if (savedView === '1') {
+                    changeColumns(1);
+                  }
+                }
+              
+                // Llamar a loadView() cuando la página se haya cargado completamente
+                window.onload = loadView;
+              </script>
+
+              
+            
+</body>
+</html>

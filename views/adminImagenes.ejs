@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1692/1692816.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagenes</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th  scope="col">Id</th>
+                <th scope="col">URL</th>
+                <th scope="col">Destacado</th>
+                <th scope="col">Productos_ID</th>
+                <th scope="col"></th>
+            </tr>
+            <body>
+                <% for(const imagen of imagenes) {
+                    %>
+                    <tr>
+                        <td><%= imagen.id %></td>
+                        <td><%= imagen.url %></td>
+                        <td><%= imagen.destacado %></td>
+                        <td><%= imagen.producto_id%></td>
+                        <form class="form">
+                            <div class="form-container">
+                                <td class="d-flex gap-2" >
+                                    <a href="" class="btn btn-warning btn-sm">Agregar</a>
+                                    <a href="" class="btn btn-danger btn-sm"> Editar</a>
+                                    <a href="" class="btn btn-danger btn-sm"> Eliminar</a>
+                                  </td>
+                                  <% } %>
+                
+                                
+                            </div>
+                        </form>
+                    </tr>
+            </body>
+        </thead>
+    </table>
+    
+</body>
+</html>

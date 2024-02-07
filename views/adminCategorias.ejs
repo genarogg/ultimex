@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1692/1692816.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categorias</title>
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+        </tr>
+    </thead>
+    <body>
+        <% categorias.forEach(categoria => { %>
+            <tr>
+                <td><%= categoria.id %></td>
+                <td><%= categoria.nombre %></td>
+                <form class="form">
+                    <div class="form-container">
+                        <td class="d-flex gap-2" >
+                            <a href="" class="btn btn-warning btn-sm">Agregar</a>
+                            <a href="" class="btn btn-danger btn-sm"> Editar</a>
+                            <a href="" class="btn btn-danger btn-sm"> Eliminar</a>
+                          </td>
+                        <% }); %>
+        
+                        
+                    </div>
+                </form>
+            </tr>
+         
+    </body>
+</table>
+    
+</body>
+</html>
+
+
